@@ -1,5 +1,8 @@
-import { addContact, delContact, setFilter } from './actions';
+import { addContact, delContact, setFilter } from './contactsSlice';
+
 import { createSlice } from '@reduxjs/toolkit';
+// import { persistReducer } from 'redux-persist';
+// import storage from 'redux-persist/lib/storage';
 
 const initialState = {
   contacts: {
@@ -13,7 +16,7 @@ const initialState = {
   },
 };
 
-export const contactsReducer = createSlice(initialState.contacts, {
+export const filterContact = createSlice(initialState.contacts, {
   [addContact]: (state, action) => {
     state.items.push(action.payload);
   },
@@ -27,3 +30,14 @@ export const contactsReducer = createSlice(initialState.contacts, {
     state.filter = action.payload;
   },
 });
+
+// const persistConfig = {
+//   key: 'contacts',
+//   storage,
+// };
+// export const persistedReducer = persistReducer(
+//   persistConfig,
+//   createSlice.reducer
+// );
+
+export const getFilter = state => state.filter;

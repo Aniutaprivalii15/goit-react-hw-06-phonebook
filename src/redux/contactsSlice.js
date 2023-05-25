@@ -1,7 +1,9 @@
 import { nanoid } from 'nanoid';
-import { createAction } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
-export const addContact = createAction(
+export const addContact = createSlice(
   'contacts/addContact',
   (nameText, numberText) => {
     return {
@@ -14,8 +16,18 @@ export const addContact = createAction(
     };
   }
 );
-export const delContact = createAction('contacts/deleteContact');
-export const setFilter = createAction('filter/setFilter');
+
+const persistConfig = {
+  key: 'contacts',
+  storage,
+};
+export const persistedReducer = persistReducer(
+  persistConfig,
+  addContact.reducer
+);
+
+export const delContact = createSlice ('contacts/deleteContact');
+export const setFilter = createSlice ('filter/setFilter');
 
 // export const deleteContact = contactId => {
 //   return {
