@@ -15,7 +15,7 @@ export const App = () => {
 
   const [firstRenderFlag, setFlag] = useState(true);
 
-  useEffect(() => {} );
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (firstRenderFlag) {
@@ -41,7 +41,7 @@ export const App = () => {
     if (contactsLists.findIndex(contact => name === contact.name) !== -1) {
       alert(`${name} is already in contacts.`);
     } else {
-      dispatch(addContact( name, number ));
+      dispatch(addContact(name, number));
     }
   };
 
