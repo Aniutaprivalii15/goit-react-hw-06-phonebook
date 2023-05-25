@@ -15,8 +15,6 @@ export const App = () => {
 
   const [firstRenderFlag, setFlag] = useState(true);
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     if (firstRenderFlag) {
       const contactsFromLocalStorage = localStorage.getItem('contactList');

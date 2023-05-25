@@ -1,5 +1,5 @@
 import { addContact, delContact, setFilter } from './actions';
-import { createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   contacts: {
@@ -13,7 +13,7 @@ const initialState = {
   },
 };
 
-export const contactsReducer = createReducer(initialState.contacts, {
+export const contactsReducer = createSlice(initialState.contacts, {
   [addContact]: (state, action) => {
     state.items.push(action.payload);
   },
