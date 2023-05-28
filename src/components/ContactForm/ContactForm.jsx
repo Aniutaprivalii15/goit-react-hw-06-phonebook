@@ -52,7 +52,7 @@ export const ContactForm = ({ handleSubmit }) => {
       />
       <button className={css.formBtn} type="submit">
         Add contact
-      </button>
+      </button> 
     </form>
   );
 };
